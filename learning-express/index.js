@@ -130,6 +130,9 @@ app.listen(port, ()=> console.log(`Listening on port ${port}..`));
 5. If we have input like in post,put select body-> raw -> JSON format then give the input in { "name": "new course"}
 6. You can see the result down status OK
 
+or check-out this vid for some VS code extension
+https://www.youtube.com/watch?v=AbCTlemwZ1k
+
 
 Misc:
 
