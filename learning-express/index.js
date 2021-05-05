@@ -1,7 +1,9 @@
 const express = require('express');
 const app = express();
 
-const courses=[
+app.use(express.json());
+
+var courses=[
     {id: 1, name: 'Course1'},
     {id: 2, name: 'Course2'},
     {id: 3, name: 'Course3'},
@@ -14,6 +16,23 @@ app.get('/', (req, res) => {
 //all courses
 app.get('/api/courses', (req, res) => {
     res.send(courses);
+});
+
+// Handling post requests
+app.post('/api/courses', (req, res) => {
+    // If the name is invalid
+    if(!req.body.name || req.body.name.length<3){
+        //40 status for bad request
+        res.status(400).send('Name must be atleast 3 characters long');
+        return; // We dont want to execute next statements
+    }
+
+    const course = {
+        id: courses.length + 1,
+        name: req.body.name
+    };
+    courses.push(course);
+    res.send(course); 
 });
 
 //get specific course
